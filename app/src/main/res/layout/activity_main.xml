@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edtResultado"
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/notification_large_icon_height"
+        android:padding="@dimen/marginBtnCalculadora" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="8" />
+
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="9" />
+
+
+        <Button
+            android:id="@+id/buttonDividir"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="/" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="4" />
+
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="5" />
+
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="6" />
+
+
+        <Button
+            android:id="@+id/buttonVezes"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="*" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="1" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="2" />
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="3" />
+
+
+        <Button
+            android:id="@+id/buttonMenos"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="C"
+            android:id="@+id/buttonClear"/>
+
+        <Button
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="0" />
+
+        <Button
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="."
+            android:id="@+id/buttonVirgula"/>
+
+        <Button
+            android:id="@+id/buttonMais"
+            android:layout_width="@dimen/buttonCalculadora"
+            android:layout_height="@dimen/buttonCalculadora"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="+" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonIgual"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/marginBtnCalculadora"
+            android:text="=" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
