@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="buttonCalculadora">70dp</dimen>
+    <dimen name="buttonCalculadora">86dp</dimen>
     <dimen name="marginBtnCalculadora">5dp</dimen>
 </resources>

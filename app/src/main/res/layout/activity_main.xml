@@ -140,6 +140,7 @@
             android:id="@+id/buttonClear"/>
 
         <Button
+            android:id="@+id/button0"
             android:layout_width="@dimen/buttonCalculadora"
             android:layout_height="@dimen/buttonCalculadora"
             android:layout_margin="@dimen/marginBtnCalculadora"

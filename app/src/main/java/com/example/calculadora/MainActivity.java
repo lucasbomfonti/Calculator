@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button7;
     private Button button8;
     private Button button9;
+    private Button button0;
     private Button buttonVirgula;
     private Button buttonClear;
     private Button buttonVezes;
@@ -38,10 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         operacao = "";
-
         edtResultado = findViewById(R.id.edtResultado);
         edtResultado.setEnabled(false);
-
         buscarButtonsPorId();
         addEventListeners();
     }
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         button7 = findViewById(R.id.button7);
         button8 = findViewById(R.id.button8);
         button9 = findViewById(R.id.button9);
+        button0 = findViewById(R.id.button0);
         buttonClear = findViewById(R.id.buttonClear);
         buttonVezes = findViewById(R.id.buttonVezes);
         buttonDividir = findViewById(R.id.buttonDividir);
@@ -71,32 +72,11 @@ public class MainActivity extends AppCompatActivity {
     private void addEventListeners() {
 
         List<Button> buttons = getListButtonsForConcat();
-
         for (Button btn : buttons)
             setOnClickListenerBtnConcat(btn);
-
         setOnClickListenerBtnClear();
         setOnClickListenerBtnIgual();
 
-    }
-
-    private String calcularOperacao(String operacao) {
-
-        Expression e = new Expression(operacao);
-        operacao = String.valueOf(e.calculate());
-        return operacao;
-    }
-
-    private List<Button> getListButtonsForConcat() {
-
-        return Arrays.asList(button1,
-                button2, button3,
-                button4, button5,
-                button6, button7,
-                button8, button9,
-                buttonMais, buttonMenos,
-                buttonVezes, buttonDividir,
-                buttonVirgula);
     }
 
     private void setOnClickListenerBtnIgual() {
@@ -104,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
         buttonIgual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtResultado.setText(calcularOperacao(operacao));
+                operacao = calcularOperacao(operacao);
+                edtResultado.setText(operacao);
             }
         });
     }
@@ -119,19 +100,58 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setOnClickListenerBtnConcat(Button btn) {
+    private void setOnClickListenerBtnConcat(final Button btn) {
 
         final String btnText = btn.getText().toString();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operacao = operacao.concat(btnText);
-                edtResultado.setText(operacao);
+                if (verificarBotoesComRestricao(btnText, operacao)) {
+                    operacao = operacao.concat(btnText);
+                    edtResultado.setText(operacao);
+                }
             }
 
         });
     }
 
+    private List<Button> getListButtonsForConcat() {
+        return Arrays.asList(
+                button0, button1,
+                button2, button3,
+                button4, button5,
+                button6, button7,
+                button8, button9,
+                buttonMais, buttonMenos,
+                buttonVezes, buttonDividir,
+                buttonVirgula);
+    }
 
+    private boolean verificarBotoesComRestricao(String btnText, String operacao) {
+
+        switch (btnText) {
+            case "+": return !operacao.endsWith("+") && !operacao.isEmpty();
+            case "-": return !operacao.endsWith("-") && !operacao.isEmpty();
+            case "*": return !operacao.endsWith("*") && !operacao.isEmpty();
+            case "/": return !operacao.endsWith("/") && !operacao.isEmpty();
+            case ".": return !operacao.contains(".") && !operacao.isEmpty();
+            default: return true;
+        }
+    }
+
+    private String calcularOperacao(String operacao) {
+
+        String resultado = String.valueOf(new Expression(operacao).calculate());
+
+        if (verificarSeOperacaoNaoFoiValida(resultado)) {
+            emitirAlertaDeOperacaoInvalida();
+            return operacao;
+        } else
+            return resultado;
+    }
+
+    private boolean verificarSeOperacaoNaoFoiValida(String operacao) { return operacao.trim().toUpperCase().equals("NAN"); }
+
+    private void emitirAlertaDeOperacaoInvalida() { Toast.makeText(MainActivity.this, "OPERAÇÃO INVALIDA", Toast.LENGTH_SHORT).show(); }
 }
