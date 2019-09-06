@@ -8,6 +8,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.calculadora.Operations.Multiply;
+import com.example.calculadora.Operations.Plus;
+import com.example.calculadora.Operations.Split;
+import com.example.calculadora.Operations.Subtract;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -142,13 +148,25 @@ public class MainActivity extends AppCompatActivity {
 
     private String calcularOperacao(String operacao) {
 
-        String resultado = String.valueOf(new Expression(operacao).calculate());
+        String[] temp = operacao.split("^(\\+|-|\\*|\\/)$");
+
+        String resultado = String.valueOf(calculate(temp));
 
         if (verificarSeOperacaoNaoFoiValida(resultado)) {
             emitirAlertaDeOperacaoInvalida();
             return operacao;
         } else
             return resultado;
+    }
+
+    private double calculate(String[] operator){
+        switch (operator[1]){
+            case "+": return new Plus().Calculate(Double.valueOf(operator[0]), Double.valueOf(operator[2]));
+            case "-": return new Subtract().Calculate(Double.valueOf(operator[0]), Double.valueOf(operator[2]));
+            case "*": return new Multiply().Calculate(Double.valueOf(operator[0]), Double.valueOf(operator[2]));
+            case "/": return new Split().Calculate(Double.valueOf(operator[0]), Double.valueOf(operator[2]));
+            default: return 0.0;
+        }
     }
 
     private boolean verificarSeOperacaoNaoFoiValida(String operacao) { return operacao.trim().toUpperCase().equals("NAN"); }
